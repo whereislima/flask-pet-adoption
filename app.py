@@ -19,11 +19,11 @@ connect_db(app)
 @app.route("/")
 def homepage():
 
-    return render_template("index.html")
+    return render_template("home.html")
 
-@app.route("/add", methods=["GET", "POST"])
-def add_pet():
+# @app.route("/add", methods=["GET", "POST"])
+# def add_pet():
 
-    form = AddPetForm()
-    if form.validators_on_submit():
+#     form = AddPetForm()
+#     if form.validators_on_submit():
       

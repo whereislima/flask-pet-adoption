@@ -1,13 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 
+DEFAULT_PROFILE_PIC = "https://bit.ly/2SzcQdB"
+
 db = SQLAlchemy()
 
-
-def connect_db(app):
-    db.app = app
-    db.init_app(app)
-
-class Pet(db.model):
+class Pet(db.Model):
     """ Pet """
     __tablename__ = "pets"
 
@@ -23,3 +20,6 @@ class Pet(db.model):
     notes = db.Column(db.Text)
     available = db.Column(db.Boolean, default=True)
     
+def connect_db(app):
+    db.app = app
+    db.init_app(app)
