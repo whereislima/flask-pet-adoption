@@ -2,6 +2,7 @@
 {% block title %} Add Pet Form {% endblock %}
 
 {% block content %}
+
 <h1>New Pet</h1>
 <form method="POST">
   {{ form.hidden_tag() }}
@@ -9,11 +10,13 @@
   <p>
     {{ field.label }}
     {{ field }}
-  </p>
-  {% endfor %}
 
-  {% for err for field.errors %}
-    {{err}}
+    {% if field.errors %}
+      {% for error for field.errors %}
+        {{error}}
+      {% endfor %}
+    {% endif %}
+  </p>
   {% endfor %}
   <button>Submit</button>
 </form>

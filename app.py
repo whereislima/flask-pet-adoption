@@ -6,7 +6,7 @@ from forms import AddPetForm
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres:///pet_adoption_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres:///pet_db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config["SECRET_KEY"] = "mango-pudding"
@@ -19,11 +19,22 @@ connect_db(app)
 @app.route("/")
 def homepage():
 
-    return render_template("home.html")
+    pets = Pet.query.all()
 
-# @app.route("/add", methods=["GET", "POST"])
-# def add_pet():
+    return render_template("home.html", pets=pets)
 
-#     form = AddPetForm()
-#     if form.validators_on_submit():
-      
+
+@app.route("/add", methods=["GET", "POST"])
+def add_pet():
+
+    form = AddPetForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        species = form.species.data
+        photo_url = form.photo_url.data
+        age = form.age.data
+        notes = form.notes.data
+    
+        return redirect("/")
+    else:
+        return render_template("add.html")

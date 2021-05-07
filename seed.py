@@ -1,6 +1,9 @@
 from models import Pet, db
 from app import app
 
+# dropdb pet_db
+# createdb pet_db
+
 db.drop_all()
 db.create_all()
 

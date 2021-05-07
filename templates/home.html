@@ -7,14 +7,24 @@
 <h2>Pets</h2>
 
 <section>
+  {% for pet in pets %}
   <div>
-    <!-- image -->
-    <!-- name --> 
-    is available 
+    <p>
+      <img src="{{pet.photo_url}}" alt="" style="width:200px;height:300px;" >
+    </p>
+    <p>
+     <a href="">{{ pet.name }} </a> 
+     {% if pet.available %} 
+      is available
+      {% else %}
+      is not available
+      {% endif %}
+    </p>
   </div>
+  {% endfor %}
 </section>
 
-<form action="">
+<form action="/add">
   <button>Add a Pet</button>
 </form>
 
