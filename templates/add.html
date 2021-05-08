@@ -12,7 +12,7 @@
     {{ field }}
 
     {% if field.errors %}
-      {% for error for field.errors %}
+      {% for error in field.errors %}
         {{error}}
       {% endfor %}
     {% endif %}
@@ -20,5 +20,8 @@
   {% endfor %}
   <button>Submit</button>
 </form>
+<form action="/">
+  <button>Cancel</button>
+</form>
 
-{% endblock %}
+{% endblock %}y
